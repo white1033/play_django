@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^$', home, name='home'),
     url(r'^store/', include('stores.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
