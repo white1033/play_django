@@ -16,6 +16,13 @@ class Store(models.Model):
     def get_absolute_url(self):
         return reverse('store_detail', kwargs={'pk': self.pk})
 
+    def can_user_delete(self, user):
+        if not self.owner or self.owner == user:
+            return True
+        if user.has_perm('stores.delete_store'):
+            return True
+        return False
+
 
 class MenuItem(models.Model):
 
